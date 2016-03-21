@@ -73,8 +73,8 @@
 		D24DD7321C9E47620060A9A6 /* TextFieldTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D24DD7351C9E47620060A9A6 /* Info.plist */,
 				D2D6AC581C9F93BB00FA450A /* TextFieldTableViewCell.swift */,
+				D24DD7351C9E47620060A9A6 /* Info.plist */,
 			);
 			path = TextFieldTableViewCell;
 			sourceTree = "<group>";
