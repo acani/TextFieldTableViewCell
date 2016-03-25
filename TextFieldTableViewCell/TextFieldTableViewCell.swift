@@ -12,7 +12,7 @@ public class TextFieldTableViewCell: UITableViewCell {
 
         textField.translatesAutoresizingMaskIntoConstraints = false
         let insets = UIEdgeInsets(top: 0, left: separatorInset.left+1, bottom: 0, right: 0)
-        let constraints = NSLayoutConstraint.constraintsWithSuperview(contentView, subview: textField, insets: insets)
+        let constraints = NSLayoutConstraint.constraintsWithSubview(textField, superview: contentView, insets: insets)
         textFieldLeftLayoutConstraint = constraints[1]
         NSLayoutConstraint.activateConstraints(constraints)
     }
