@@ -3,7 +3,7 @@ import AutoLayout
 
 public class TextFieldTableViewCell: UITableViewCell {
     public var textFieldLeftLayoutConstraint: NSLayoutConstraint!
-    public let textField = UITextField(frame: CGRectZero)
+    public let textField = UITextField(frame: .zero)
 
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
