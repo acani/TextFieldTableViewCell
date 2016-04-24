@@ -52,7 +52,7 @@ class EnterEmailTableViewController: UITableViewController, UITextFieldDelegate 
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         doneAction()
-        return true
+        return false
     }
 
     // MARK: - Actions
