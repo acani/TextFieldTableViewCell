@@ -23,6 +23,10 @@ public class TextFieldTableViewCell: UITableViewCell {
 }
 
 extension UITableView {
+    public func indexPathForTextField(textField: UITextField) -> NSIndexPath? {
+        return indexPathForCell(textField.superview!.superview! as! UITableViewCell)
+    }
+
     public func textFieldForRowAtIndexPath(indexPath: NSIndexPath) -> UITextField? {
         return (cellForRowAtIndexPath(indexPath) as! TextFieldTableViewCell?)?.textField
     }
