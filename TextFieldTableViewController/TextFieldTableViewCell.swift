@@ -5,6 +5,8 @@ public class TextFieldTableViewCell: UITableViewCell {
     public var textFieldLeftLayoutConstraint: NSLayoutConstraint!
     public let textField = UITextField(frame: .zero)
 
+    // MARK: - UITableViewCell
+
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None

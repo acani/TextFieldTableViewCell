@@ -15,10 +15,6 @@ public class TextFieldTableViewController: UITableViewController, UITextFieldDel
 
     // MARK: - UIViewController
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override public func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(TextFieldTableViewCell.self, forCellReuseIdentifier: "TextFieldCell")
@@ -27,6 +23,12 @@ public class TextFieldTableViewController: UITableViewController, UITextFieldDel
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.textFieldForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.becomeFirstResponder()
+    }
+
+    // MARK: - UITableViewController
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - UITableViewDataSource
