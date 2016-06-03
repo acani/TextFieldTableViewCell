@@ -18,10 +18,7 @@ public class TextFieldTableViewCell: UITableViewCell {
         textFieldLeftLayoutConstraint = constraints[1]
         NSLayoutConstraint.activateConstraints(constraints)
     }
-
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 }
 
 extension UITableView {

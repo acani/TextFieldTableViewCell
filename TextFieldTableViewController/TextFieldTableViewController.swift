@@ -12,6 +12,7 @@ public class TextFieldTableViewController: UITableViewController, UITextFieldDel
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(TextFieldTableViewController.doneAction))
         self.title = title
     }
+    required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 
     // MARK: - UIViewController
 
@@ -23,12 +24,6 @@ public class TextFieldTableViewController: UITableViewController, UITextFieldDel
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.textFieldForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.becomeFirstResponder()
-    }
-
-    // MARK: - UITableViewController
-
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - UITableViewDataSource

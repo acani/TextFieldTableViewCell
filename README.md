@@ -14,11 +14,12 @@ Usage:
 import UIKit
 
 class EnterEmailTableViewController: UITableViewController, UITextFieldDelegate {
-    convenience init() {
+    init() {
         self.init(style: .Grouped)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "doneAction")
         title = "Enter Email"
     }
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 
     // MARK: - UIViewController
 
