@@ -3,7 +3,7 @@ import UIKit
 public class TextFieldTableViewController: UITableViewController, UITextFieldDelegate {
     public let placeholders: [[String]]
     public var texts: [[String]]
-    var didSetFirstResponder = false
+    private var didBecomeFirstResponder = false
 
     public init(title: String, placeholders: [[String]], texts: [[String]]) {
         self.placeholders = placeholders
@@ -18,7 +18,7 @@ public class TextFieldTableViewController: UITableViewController, UITextFieldDel
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(TextFieldTableViewCell.self, forCellReuseIdentifier: "TextFieldCell")
+        tableView.registerClass(TextFieldTableViewCell.self, forCellReuseIdentifier: String(TextFieldTableViewCell))
     }
 
     override public func viewWillAppear(animated: Bool) {
@@ -37,10 +37,10 @@ public class TextFieldTableViewController: UITableViewController, UITextFieldDel
     }
 
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TextFieldCell", forIndexPath: indexPath) as! TextFieldTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(TextFieldTableViewCell), forIndexPath: indexPath) as! TextFieldTableViewCell
         let textField = cell.textField
         configureTextField(textField, forIndexPath: indexPath)
-        if !didSetFirstResponder { didSetFirstResponder = textField.becomeFirstResponder() }
+        if !didBecomeFirstResponder { didBecomeFirstResponder = textField.becomeFirstResponder() }
         return cell
     }
 

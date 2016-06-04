@@ -1,6 +1,6 @@
-# TextFieldTableViewCell
+# TextFieldTableViewController
 
-`UITableViewCell` with a `UITextField` inside
+A `UITableViewController` with a `UITextField` inside each `UITableViewCell`
 
 Setup: [How to add a Git repository to your Xcode project][1]
 
@@ -12,55 +12,27 @@ Usage:
 
 ```swift
 import UIKit
+import TextFieldTableViewController
 
-class EnterEmailTableViewController: UITableViewController, UITextFieldDelegate {
+class EnterEmailTableViewController: TextFieldTableViewController {
     init() {
-        self.init(style: .Grouped)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "doneAction")
-        title = "Enter Email"
+        super.init(title: "Enter Email", placeholders: [["Email"]], texts: [[""]])
     }
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 
-    // MARK: - UIViewController
+    // MARK: - TextFieldTableViewController
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.registerClass(TextFieldTableViewCell.self, forCellReuseIdentifier: "TextFieldCell")
-    }
-
-    // MARK: - UITableViewDataSource
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TextFieldCell", forIndexPath: indexPath) as! TextFieldTableViewCell
-        // cell.textFieldLeftLayoutConstraint.constant = tableView.separatorInset.left + 10 // custom layout
-        let textField = cell.textField
+    override func configureTextField(textField: UITextField, forIndexPath indexPath: NSIndexPath) {
+        super.configureTextField(textField, forIndexPath: indexPath)
         textField.autocapitalizationType = .None
-        textField.autocorrectionType = .No
-        textField.clearButtonMode = .WhileEditing
-        textField.delegate = self
         textField.keyboardType = .EmailAddress
-        textField.placeholder = "Email"
-        textField.returnKeyType = .Done
-        textField.becomeFirstResponder()
-        return cell
-    }
-
-    // MARK: - UITextFieldDelegate
-
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        doneAction()
-        return false
     }
 
     // MARK: - Actions
 
-    func doneAction() {
-        let email = tableView.textFieldForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.text!
-        .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    override func doneAction() {
+        let email = texts[0][0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        if !email.isValidEmail { return alert(title: "", message: Validator.invalidEmailMessage) }
         print("Email entered: \(email)")
     }
 }
