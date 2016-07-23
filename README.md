@@ -32,7 +32,6 @@ class EnterEmailTableViewController: TextFieldTableViewController {
 
     override func doneAction() {
         let email = texts[0][0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        if !email.isValidEmail { return alert(title: "", message: Validator.invalidEmailMessage) }
         print("Email entered: \(email)")
     }
 }
