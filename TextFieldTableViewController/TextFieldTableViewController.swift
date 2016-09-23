@@ -1,98 +1,98 @@
 import UIKit
 
-public class TextFieldTableViewController: UITableViewController, UITextFieldDelegate {
-    public let placeholders: [[String]]
-    public var texts: [[String]]
+open class TextFieldTableViewController: UITableViewController, UITextFieldDelegate {
+    open let placeholders: [[String]]
+    open var texts: [[String]]
     private var didBecomeFirstResponder = false
 
     public init(title: String, placeholders: [[String]], texts: [[String]]) {
         self.placeholders = placeholders
         self.texts = texts
-        super.init(style: .Grouped)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(TextFieldTableViewController.doneAction))
+        super.init(style: .grouped)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(TextFieldTableViewController.doneAction))
         self.title = title
     }
     required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 
     // MARK: - UIViewController
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(TextFieldTableViewCell.self, forCellReuseIdentifier: String(TextFieldTableViewCell))
+        tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: String(describing: TextFieldTableViewCell.self))
     }
 
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.textFieldForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))?.becomeFirstResponder()
+        tableView.textFieldForRow(at: IndexPath(row: 0, section: 0))?.becomeFirstResponder()
     }
 
     // MARK: - UITableViewDataSource
 
-    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return texts.count
     }
 
-    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return texts[section].count
     }
 
-    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(TextFieldTableViewCell), forIndexPath: indexPath) as! TextFieldTableViewCell
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TextFieldTableViewCell.self), for: indexPath) as! TextFieldTableViewCell
         let textField = cell.textField
-        configureTextField(textField, forIndexPath: indexPath)
+        configureTextField(textField, forRowAt: indexPath)
         if !didBecomeFirstResponder { didBecomeFirstResponder = textField.becomeFirstResponder() }
         return cell
     }
 
-    public func configureTextField(textField: UITextField, forIndexPath indexPath: NSIndexPath) {
-        textField.addTarget(self, action: #selector(TextFieldTableViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
-        textField.autocorrectionType = .No
-        textField.clearButtonMode = .WhileEditing
+    open func configureTextField(_ textField: UITextField, forRowAt indexPath: IndexPath) {
+        textField.addTarget(self, action: #selector(TextFieldTableViewController.textFieldDidChange(_:)), for: .editingChanged)
+        textField.autocorrectionType = .no
+        textField.clearButtonMode = .whileEditing
         textField.delegate = self
-        textField.returnKeyType = !isLastIndexPath(indexPath) ? .Next : .Done
+        textField.returnKeyType = !isLastIndexPath(indexPath) ? .next : .done
         textField.placeholder = placeholders[indexPath.section][indexPath.row]
         textField.text = texts[indexPath.section][indexPath.row]
     }
 
     // MARK: - UITextFieldDelegate
 
-    func textFieldDidChange(textField: UITextField) {
-        let indexPath = tableView.indexPathForTextField(textField)!
+    func textFieldDidChange(_ textField: UITextField) {
+        let indexPath = tableView.indexPath(for: textField)!
         texts[indexPath.section][indexPath.row] = textField.text!
     }
 
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        let indexPath = tableView.indexPathForTextField(textField)!
-        var nextIndexPath: NSIndexPath
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let indexPath = tableView.indexPath(for: textField)!
+        var nextIndexPath: IndexPath
         if !isLastRow(indexPath.row, inSection: indexPath.section) {
-            nextIndexPath = NSIndexPath(forRow: indexPath.row+1, inSection: indexPath.section)
+            nextIndexPath = IndexPath(row: indexPath.row+1, section: indexPath.section)
         } else if !isLastSection(indexPath.section) {
-            nextIndexPath = NSIndexPath(forRow: 0, inSection: indexPath.section+1)
+            nextIndexPath = IndexPath(row: 0, section: indexPath.section+1)
         } else {
             doneAction()
             return false
         }
-        tableView.textFieldForRowAtIndexPath(nextIndexPath)!.becomeFirstResponder()
+        tableView.textFieldForRow(at: nextIndexPath)!.becomeFirstResponder()
         return false
     }
 
     // MARK: - Actions
 
-    public func doneAction() {
+    open func doneAction() {
         // Subclasses override this method
     }
 
     // MARK: - Helpers
 
-    private func isLastRow(row: Int, inSection section: Int) -> Bool {
+    private func isLastRow(_ row: Int, inSection section: Int) -> Bool {
         return row == texts[section].count-1
     }
 
-    private func isLastSection(section: Int) -> Bool {
+    private func isLastSection(_ section: Int) -> Bool {
         return section == texts.count-1
     }
 
-    private func isLastIndexPath(indexPath: NSIndexPath) -> Bool {
+    private func isLastIndexPath(_ indexPath: IndexPath) -> Bool {
         return isLastSection(indexPath.section) && isLastRow(indexPath.row, inSection: indexPath.section)
     }
 }

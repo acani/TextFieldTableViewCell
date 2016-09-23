@@ -22,16 +22,16 @@ class EnterEmailTableViewController: TextFieldTableViewController {
 
     // MARK: - TextFieldTableViewController
 
-    override func configureTextField(textField: UITextField, forIndexPath indexPath: NSIndexPath) {
-        super.configureTextField(textField, forIndexPath: indexPath)
-        textField.autocapitalizationType = .None
-        textField.keyboardType = .EmailAddress
+    override func configureTextField(_ textField: UITextField, forRowAt indexPath: IndexPath) {
+        super.configureTextField(textField, forRowAt: indexPath)
+        textField.autocapitalizationType = .none
+        textField.keyboardType = .emailAddress
     }
 
     // MARK: - Actions
 
     override func doneAction() {
-        let email = texts[0][0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let email = texts[0][0].trimmingCharacters(in: .whitespacesAndNewlines)
         print("Email entered: \(email)")
     }
 }
