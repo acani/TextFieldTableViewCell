@@ -45,7 +45,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
     }
 
     open func configureTextField(_ textField: UITextField, forRowAt indexPath: IndexPath) {
-        textField.addTarget(self, action: #selector(TextFieldTableViewController.textFieldDidChange(_:)), for: .editingChanged)
+        textField.addTarget(self, action: #selector(TextFieldTableViewController.textFieldDidChange), for: .editingChanged)
         textField.autocorrectionType = .no
         textField.clearButtonMode = .whileEditing
         textField.delegate = self
