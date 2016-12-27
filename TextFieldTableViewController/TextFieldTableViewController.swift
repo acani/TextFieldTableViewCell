@@ -9,7 +9,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
         self.placeholders = placeholders
         self.texts = texts
         super.init(style: .grouped)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(TextFieldTableViewController.doneAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
         self.title = title
     }
     required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
@@ -45,7 +45,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
     }
 
     open func configureTextField(_ textField: UITextField, forRowAt indexPath: IndexPath) {
-        textField.addTarget(self, action: #selector(TextFieldTableViewController.textFieldDidChange), for: .editingChanged)
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.autocorrectionType = .no
         textField.clearButtonMode = .whileEditing
         textField.delegate = self
