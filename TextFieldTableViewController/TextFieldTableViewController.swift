@@ -3,7 +3,6 @@ import UIKit
 open class TextFieldTableViewController: UITableViewController, UITextFieldDelegate {
     open let placeholders: [[String]]
     open var texts: [[String]]
-    private var didBecomeFirstResponder = false
 
     public init(title: String, placeholders: [[String]], texts: [[String]]) {
         self.placeholders = placeholders
@@ -18,12 +17,9 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: String(describing: TextFieldTableViewCell.self))
-    }
-
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.textFieldForRow(at: IndexPath(row: 0, section: 0))?.becomeFirstResponder()
     }
 
     // MARK: - UITableViewDataSource
@@ -40,7 +36,6 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TextFieldTableViewCell.self), for: indexPath) as! TextFieldTableViewCell
         let textField = cell.textField
         configureTextField(textField, forRowAt: indexPath)
-        if !didBecomeFirstResponder { didBecomeFirstResponder = textField.becomeFirstResponder() }
         return cell
     }
 
