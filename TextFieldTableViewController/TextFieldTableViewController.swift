@@ -4,12 +4,11 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
     open let placeholders: [[String]]
     open var texts: [[String]]
 
-    public init(title: String, placeholders: [[String]], texts: [[String]]) {
+    public init(placeholders: [[String]], texts: [[String]]) {
         self.placeholders = placeholders
         self.texts = texts
         super.init(style: .grouped)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
-        self.title = title
     }
     required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 
