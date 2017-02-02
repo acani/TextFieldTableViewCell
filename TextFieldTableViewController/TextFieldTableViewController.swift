@@ -33,9 +33,14 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TextFieldTableViewCell.self), for: indexPath) as! TextFieldTableViewCell
+        configure(cell: cell, forRowAt: indexPath)
         let textField = cell.textField
         configureTextField(textField, forRowAt: indexPath)
         return cell
+    }
+
+    open func configure(cell: TextFieldTableViewCell, forRowAt indexPath: IndexPath) {
+        // Subclasses override this method
     }
 
     open func configureTextField(_ textField: UITextField, forRowAt indexPath: IndexPath) {
