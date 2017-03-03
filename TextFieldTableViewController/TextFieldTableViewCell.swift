@@ -10,7 +10,7 @@ open class TextFieldTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
 
-        textField.adjustsFontForContentSizeCategory = true
+        if #available(iOS 10, *) { textField.adjustsFontForContentSizeCategory = true }
         textField.font = .preferredFont(forTextStyle: .body)
         contentView.addSubview(textField)
 
