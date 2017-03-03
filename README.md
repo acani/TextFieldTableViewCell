@@ -4,10 +4,6 @@ A `UITableViewController` with a `UITextField` inside each `UITableViewCell`
 
 Setup: [How to add a Git repository to your Xcode project][1]
 
-Dependencies:
-
-* [AutoLayout][2]
-
 Usage:
 
 ```swift
@@ -41,5 +37,4 @@ Released under the [Unlicense][2].
 
 
   [1]: https://github.com/acani/Libraries
-  [2]: https://github.com/acani/AutoLayout
-  [3]: http://unlicense.org
+  [2]: http://unlicense.org

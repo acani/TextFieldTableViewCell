@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D247AD1C1CA0F56F004D64C7 /* AutoLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D247AD191CA0F54E004D64C7 /* AutoLayout.framework */; };
 		D24DD73B1C9E47620060A9A6 /* TextFieldTableViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24DD7301C9E47620060A9A6 /* TextFieldTableViewController.framework */; };
 		D24DD7401C9E47620060A9A6 /* TextFieldTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DD73F1C9E47620060A9A6 /* TextFieldTableViewControllerTests.swift */; };
 		D263739F1D00555300D806AD /* TextFieldTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263739E1D00555300D806AD /* TextFieldTableViewController.swift */; };
@@ -15,20 +14,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D247AD181CA0F54E004D64C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D247AD131CA0F54D004D64C7 /* AutoLayout.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2D6AC661CA0927200FA450A;
-			remoteInfo = AutoLayout;
-		};
-		D247AD1A1CA0F54E004D64C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D247AD131CA0F54D004D64C7 /* AutoLayout.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2D6AC701CA0927300FA450A;
-			remoteInfo = AutoLayoutTests;
-		};
 		D24DD73C1C9E47620060A9A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D24DD7271C9E47620060A9A6 /* Project object */;
@@ -39,7 +24,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D247AD131CA0F54D004D64C7 /* AutoLayout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AutoLayout.xcodeproj; path = ../AutoLayout/AutoLayout.xcodeproj; sourceTree = "<group>"; };
 		D24DD7301C9E47620060A9A6 /* TextFieldTableViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextFieldTableViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24DD7351C9E47620060A9A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D24DD73A1C9E47620060A9A6 /* TextFieldTableViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldTableViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D247AD1C1CA0F56F004D64C7 /* AutoLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,29 +53,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D247AD0D1CA0F432004D64C7 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				D247AD131CA0F54D004D64C7 /* AutoLayout.xcodeproj */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
-		D247AD141CA0F54D004D64C7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D247AD191CA0F54E004D64C7 /* AutoLayout.framework */,
-				D247AD1B1CA0F54E004D64C7 /* AutoLayoutTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D24DD7261C9E47620060A9A6 = {
 			isa = PBXGroup;
 			children = (
 				D24DD7321C9E47620060A9A6 /* TextFieldTableViewController */,
 				D24DD73E1C9E47620060A9A6 /* TextFieldTableViewControllerTests */,
-				D247AD0D1CA0F432004D64C7 /* Libraries */,
 				D24DD7311C9E47620060A9A6 /* Products */,
 				D2D6AC821CA0B3C100FA450A /* README.md */,
 			);
@@ -205,12 +170,6 @@
 			mainGroup = D24DD7261C9E47620060A9A6;
 			productRefGroup = D24DD7311C9E47620060A9A6 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D247AD141CA0F54D004D64C7 /* Products */;
-					ProjectRef = D247AD131CA0F54D004D64C7 /* AutoLayout.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D24DD72F1C9E47620060A9A6 /* TextFieldTableViewController */,
@@ -218,23 +177,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D247AD191CA0F54E004D64C7 /* AutoLayout.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AutoLayout.framework;
-			remoteRef = D247AD181CA0F54E004D64C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D247AD1B1CA0F54E004D64C7 /* AutoLayoutTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AutoLayoutTests.xctest;
-			remoteRef = D247AD1A1CA0F54E004D64C7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D24DD72E1C9E47620060A9A6 /* Resources */ = {

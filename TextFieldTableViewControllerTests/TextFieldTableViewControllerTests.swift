@@ -2,7 +2,7 @@ import XCTest
 import TextFieldTableViewController
 
 class TextFieldTableViewControllerTests: XCTestCase {
-    let textFieldTableViewController = TextFieldTableViewController(title: "Welcome", placeholders: [["Email"]], texts: [[""]])
+    let textFieldTableViewController = TextFieldTableViewController(placeholders: [["Email"]], texts: [[""]])
 
     func testInitWithStyleReuseIdentifier() {
         let tableView = textFieldTableViewController.tableView!
