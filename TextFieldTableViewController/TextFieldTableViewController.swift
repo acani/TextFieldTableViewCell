@@ -55,7 +55,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
     // MARK: - UITextFieldDelegate
 
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         let indexPath = tableView.indexPath(for: textField)!
         texts[indexPath.section][indexPath.row] = textField.text!
     }
@@ -77,7 +77,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
     // MARK: - Actions
 
-    open func doneAction() {
+    @objc open func doneAction() {
         // Subclasses override this method
     }
 
