@@ -18,7 +18,8 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
         super.viewDidLoad()
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: String(describing: TextFieldTableViewCell.self))
+        let identifier = String(describing: TextFieldTableViewCell.self)
+        tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: identifier)
     }
 
     // MARK: - UITableViewDataSource
@@ -32,7 +33,8 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
     }
 
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TextFieldTableViewCell.self), for: indexPath) as! TextFieldTableViewCell
+        let identifier = String(describing: TextFieldTableViewCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TextFieldTableViewCell
         configure(cell: cell, forRowAt: indexPath)
         let textField = cell.textField
         configureTextField(textField, forRowAt: indexPath)
