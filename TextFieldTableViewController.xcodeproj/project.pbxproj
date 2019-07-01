@@ -162,7 +162,7 @@
 			};
 			buildConfigurationList = D24DD72A1C9E47620060A9A6 /* Build configuration list for PBXProject "TextFieldTableViewController" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
