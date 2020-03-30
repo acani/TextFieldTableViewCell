@@ -23,7 +23,12 @@ open class TextFieldTableViewCell: UITableViewCell {
       NSLayoutConstraint(item: textField, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 0)
     ])
   }
-  required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
+
+  // MARK: - NSCoding
+
+  required public init?(coder: NSCoder) {
+    fatalError("init(coder:) hasn't been implemented")
+  }
 }
 
 extension UITableView {

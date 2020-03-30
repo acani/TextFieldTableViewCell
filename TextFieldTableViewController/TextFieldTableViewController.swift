@@ -10,7 +10,12 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
     super.init(style: .grouped)
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
   }
-  required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
+
+  // MARK: - NSCoding
+
+  required public init?(coder: NSCoder) {
+    fatalError("init(coder:) hasn't been implemented")
+  }
 
   // MARK: - UIViewController
 
@@ -57,7 +62,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
   // MARK: - UITextFieldDelegate
 
-  @objc func textFieldDidChange(_ textField: UITextField) {
+  @objc private func textFieldDidChange(_ textField: UITextField) {
     let indexPath = tableView.indexPath(for: textField)!
     texts[indexPath.section][indexPath.row] = textField.text!
   }

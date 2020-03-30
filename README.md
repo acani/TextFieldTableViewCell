@@ -14,7 +14,12 @@ class EnterEmailTableViewController: TextFieldTableViewController {
   init() {
     super.init(title: "Enter Email", placeholders: [["Email"]], texts: [[""]])
   }
-  required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
+
+  // MARK: - NSCoding
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) hasn't been implemented")
+  }
 
   // MARK: - TextFieldTableViewController
 
