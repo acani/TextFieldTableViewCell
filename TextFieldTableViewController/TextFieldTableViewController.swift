@@ -8,7 +8,8 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
     self.placeholders = placeholders
     self.texts = texts
     super.init(style: .grouped)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      barButtonSystemItem: .done, target: self, action: #selector(doneAction))
   }
 
   // MARK: - NSCoding
