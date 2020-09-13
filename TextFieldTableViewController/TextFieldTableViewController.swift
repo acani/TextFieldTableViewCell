@@ -14,9 +14,7 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
   // MARK: - NSCoding
 
-  required public init?(coder: NSCoder) {
-    fatalError("init(coder:) hasn't been implemented")
-  }
+  required public init?(coder: NSCoder) { fatalError("init(coder:) hasn't been implemented") }
 
   // MARK: - UIViewController
 
@@ -30,20 +28,24 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
 
   // MARK: - UITableViewDataSource
 
-  override open func numberOfSections(in tableView: UITableView) -> Int {
-    return texts.count
+  override open func numberOfSections(in tableView: UITableView) -> Int { texts.count }
+
+  override open func tableView(
+    _ tableView: UITableView,
+    numberOfRowsInSection section: Int
+  ) -> Int {
+    texts[section].count
   }
 
-  override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return texts[section].count
-  }
-
-  override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override open func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
     let identifier = String(describing: TextFieldTableViewCell.self)
-    let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TextFieldTableViewCell
+    let cell = tableView
+      .dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TextFieldTableViewCell
     configure(cell: cell, forRowAt: indexPath)
-    let textField = cell.textField
-    configureTextField(textField, forRowAt: indexPath)
+    configureTextField(cell.textField, forRowAt: indexPath)
     return cell
   }
 
@@ -92,14 +94,12 @@ open class TextFieldTableViewController: UITableViewController, UITextFieldDeleg
   // MARK: - Helpers
 
   private func isLastRow(_ row: Int, inSection section: Int) -> Bool {
-    return row == texts[section].count-1
+    row == texts[section].count-1
   }
 
-  private func isLastSection(_ section: Int) -> Bool {
-    return section == texts.count-1
-  }
+  private func isLastSection(_ section: Int) -> Bool { section == texts.count-1 }
 
   private func isLastIndexPath(_ indexPath: IndexPath) -> Bool {
-    return isLastSection(indexPath.section) && isLastRow(indexPath.row, inSection: indexPath.section)
+    isLastSection(indexPath.section) && isLastRow(indexPath.row, inSection: indexPath.section)
   }
 }

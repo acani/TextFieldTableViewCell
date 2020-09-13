@@ -17,9 +17,7 @@ class EnterEmailTableViewController: TextFieldTableViewController {
 
   // MARK: - NSCoding
 
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) hasn't been implemented")
-  }
+  required init?(coder: NSCoder) { fatalError("init(coder:) hasn't been implemented") }
 
   // MARK: - TextFieldTableViewController
 
